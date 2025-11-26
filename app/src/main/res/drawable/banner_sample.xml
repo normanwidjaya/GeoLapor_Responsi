@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#B80000"
+                android:centerColor="#E5383B"
+                android:endColor="#FF6363"
+                android:angle="45" />
+        </shape>
+    </item>
+
+    <!-- Overlay transparan hitam elegan -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#66000000"/> <!-- 40% transparan -->
+        </shape>
+    </item>
+
+</layer-list>
