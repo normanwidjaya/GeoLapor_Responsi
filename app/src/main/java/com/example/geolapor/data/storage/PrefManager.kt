@@ -18,42 +18,78 @@ class PrefManager private constructor(ctx: Context) {
 
     // ---------------- LOGIN ----------------
 
-    fun saveUser(email: String, pass: String) {
+    fun saveUser(name: String, email: String, pass: String) {
         prefs.edit()
+            .putString("name", name)
             .putString("email", email)
             .putString("password", pass)
             .apply()
     }
 
-    fun login(email: String, password: String) =
-        prefs.getString("email", null) == email &&
+    fun login(email: String, password: String): Boolean {
+        return prefs.getString("email", null) == email &&
                 prefs.getString("password", null) == password
+    }
 
     fun saveLoginState(state: Boolean) {
         prefs.edit().putBoolean("loggedIn", state).apply()
     }
 
-    fun isLoggedIn() =
+    fun isLoggedIn(): Boolean =
         prefs.getBoolean("loggedIn", false)
 
     fun logout() {
-        prefs.edit()
-            .putBoolean("loggedIn", false)
-            .apply()
+        prefs.edit().apply {
+            remove("name")
+            remove("email")
+            remove("password")
+            putBoolean("loggedIn", false)
+            apply()
+        }
     }
 
+    fun deleteAccount() {
+        prefs.edit().clear().apply()
+    }
+
+    fun getUserData(): User {
+        return User(
+            prefs.getString("name", "") ?: "",
+            prefs.getString("email", "") ?: ""
+        )
+    }
+
+    data class User(
+        val name: String,
+        val email: String
+    )
+
+
     // ---------------- REPORTS ----------------
-    private val KEY_REPORTS = "reports_list"
+
+    private fun reportKey():String{
+        val email = prefs.getString("email", "")!!
+        return "reports_list_$email"
+    }
 
     fun saveReports(list: List<Report>) {
         prefs.edit()
-            .putString(KEY_REPORTS, gson.toJson(list))
+            .putString(reportKey(), gson.toJson(list))
             .apply()
     }
-
     fun loadReports(): List<Report> {
-        val json = prefs.getString(KEY_REPORTS, null) ?: return emptyList()
+        val json = prefs.getString(reportKey(), null) ?: return emptyList()
         val type = object : TypeToken<List<Report>>() {}.type
         return gson.fromJson(json, type)
     }
+    fun saveProfilePhoto(path: String) {
+        prefs.edit()
+            .putString("profile_photo", path)
+            .apply()
+    }
+
+    fun getProfilePhoto(): String? {
+        return prefs.getString("profile_photo", null)
+    }
+
 }

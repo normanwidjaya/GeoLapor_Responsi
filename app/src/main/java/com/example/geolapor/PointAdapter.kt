@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.geolapor.R
 import com.example.geolapor.data.model.Report
 import com.example.geolapor.databinding.ItemReportBinding
+import android.net.Uri
 import java.io.File
 
 class PointAdapter(
@@ -20,18 +21,19 @@ class PointAdapter(
             b.tvReporter.text = r.reporterName ?: "-"
             b.tvCat.text = "${r.category} • ${r.subCategory}"
             b.tvDate.text = r.date
+            b.tvDesc.text = r.description
 
             if (!r.photoPath.isNullOrEmpty()) {
-                val f = File(r.photoPath)
-                if (f.exists()) {
-                    val bm = BitmapFactory.decodeFile(f.absolutePath)
-                    b.ivThumb.setImageBitmap(bm)
-                } else {
+                try {
+                    val uri = Uri.parse(r.photoPath)
+                    b.ivThumb.setImageURI(uri)
+                } catch (e: Exception) {
                     b.ivThumb.setImageResource(R.drawable.ic_image_placeholder)
                 }
             } else {
                 b.ivThumb.setImageResource(R.drawable.ic_image_placeholder)
             }
+
 
             b.root.setOnClickListener { onClick(r) }
         }

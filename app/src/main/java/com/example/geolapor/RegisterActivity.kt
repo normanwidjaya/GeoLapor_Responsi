@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             // Simpan akun
-            pref.saveUser(email, pass)
+            pref.saveUser(name,email,pass)
             pref.saveLoginState(true)
 
             Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()

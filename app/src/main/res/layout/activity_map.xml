@@ -4,41 +4,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- PETA -->
     <org.maplibre.android.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Search bar -->
+    <!-- SEARCH BAR -->
     <LinearLayout
         android:id="@+id/searchContainer"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_margin="8dp"
+        android:layout_margin="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@drawable/search_bg"
+        android:gravity="center_vertical"
         android:layout_gravity="top">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:queryHint="Cari lokasi atau laporan..."
-            android:layout_weight="1"/>
+            android:iconifiedByDefault="false"
+            android:background="@android:color/transparent"/>
 
+        <!-- Spinner kecil, hanya icon dropdown -->
         <Spinner
             android:id="@+id/spinnerSearchMode"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:entries="@array/search_modes"/>
+            android:spinnerMode="dropdown"
+            android:background="@drawable/dropdown" />
     </LinearLayout>
 
+    <!-- CROSSHAIR DI TENGAH (TIDAK BERGERAK) -->
+    <ImageView
+        android:id="@+id/imgCrosshair"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_crosshair"
+        android:alpha="0.9"/>
+
+    <!-- TOMBOL FOKUS KE LOKASI USER (KANAN BAWAH) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCenter"
+        android:id="@+id/btnCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_mylocation"
         android:layout_margin="16dp"
-        android:layout_gravity="bottom|end" />
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_menu_mylocation"
+        app:tint="@android:color/white" />
+
+    <!-- TOMBOL TAMBAH MARKER DI TITIK CROSSHAIR (KIRI BAWAH) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|start"
+        android:src="@android:drawable/ic_input_add"
+        app:tint="@android:color/white" />
+
 </FrameLayout>

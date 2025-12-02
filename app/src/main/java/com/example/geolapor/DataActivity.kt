@@ -34,12 +34,6 @@ class DataActivity : AppCompatActivity() {
 
         binding.rvReports.layoutManager = LinearLayoutManager(this)
         binding.rvReports.adapter = adapter
-
-        binding.btnLogout.setOnClickListener {
-            pref.logout()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
     }
 
     override fun onResume() {

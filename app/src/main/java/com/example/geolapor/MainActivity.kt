@@ -1,35 +1,37 @@
 package com.example.geolapor
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.geolapor.data.storage.PrefManager
+import androidx.fragment.app.Fragment
 import com.example.geolapor.databinding.ActivityMainBinding
+import com.example.geolapor.ui.HomeFragment
+import com.example.geolapor.ui.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var pref: PrefManager
 
-    override fun onCreate(s: Bundle?) {
-        super.onCreate(s)
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        pref = PrefManager.getInstance(this)
+        // TAMPILKAN HOME PERTAMA KALI
+        replaceFragment(HomeFragment())
 
-        // Tambahkan
-        binding.btnLogout.setOnClickListener {
-            pref.logout()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+        // HANDLE BOTTOM NAVIGATION
+        binding.bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> replaceFragment(HomeFragment())
+                R.id.nav_profile -> replaceFragment(ProfileFragment())
+            }
+            true
         }
+    }
 
-        binding.btnMap.setOnClickListener {
-            startActivity(Intent(this, MapActivity::class.java))
-        }
-
-        binding.btnData.setOnClickListener {
-            startActivity(Intent(this, DataActivity::class.java))
-        }
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }

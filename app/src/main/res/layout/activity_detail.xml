@@ -66,6 +66,14 @@
             android:layout_height="wrap_content"
             android:text="Lihat di Peta"
             android:layout_marginTop="12dp"/>
+        <Button
+            android:id="@+id/btnEdit"
+            android:text="Edit Data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#E63946"
+            android:textColor="#FFFFFF"/>
 
         <Button
             android:id="@+id/btnDelete"

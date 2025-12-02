@@ -1,59 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="30dp"
-    android:background="#B80000"
-    android:orientation="vertical"
-    android:gravity="center"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/tugu">
 
-    <TextView
-        android:text="GeoLapor PRO"
-        android:textColor="#ffffff"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
-    <EditText
-        android:id="@+id/edtEmail"
-        android:hint="Email"
+    <!-- Overlay gelap tipis -->
+    <View
         android:layout_width="match_parent"
-        android:layout_marginTop="25dp"
-        android:background="@android:drawable/edit_text"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:background="#AA000000"/>
 
-    <EditText
-        android:id="@+id/edtPassword"
-        android:hint="Password"
-        android:inputType="textPassword"
+    <!-- CARD LOGIN -->
+    <LinearLayout
+        android:id="@+id/containerLogin"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:padding="24dp"
+        android:layout_margin="28dp"
+        android:elevation="10dp"
+        android:background="@drawable/bg_card"
         android:layout_width="match_parent"
-        android:background="@android:drawable/edit_text"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:text="Login"
-        android:background="#660000"
-        android:textColor="#fff"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="GeoLapor"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:text="Daftar"
-        android:background="#ffffff"
-        android:textColor="#B80000"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btnLogout"
-        android:text="Logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        <TextView
+            android:text="LOGIN"
+            android:textSize="14sp"
+            android:textColor="#D9D9D9"
+            android:layout_marginBottom="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <!-- EMAIL -->
+        <EditText
+            android:id="@+id/edtEmail"
+            android:hint="Email"
+            android:padding="14dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:background="@drawable/bg_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- PASSWORD + EYE -->
+        <RelativeLayout
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:padding="14dp"
+                android:background="@drawable/bg_input"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:inputType="textPassword" />
+
+            <ImageView
+                android:id="@+id/ivToggle"
+                android:src="@drawable/ic_eye"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:padding="6dp"
+                android:layout_alignEnd="@+id/edtPassword"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"/>
+        </RelativeLayout>
+
+        <!-- BUTTON LOGIN -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="LOGIN"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_btn_red"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:text="Belum punya akun? Daftar disini"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>

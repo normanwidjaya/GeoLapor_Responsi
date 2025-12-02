@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Lingkaran biru terang -->
+    <path
+        android:fillColor="#1E90FF"
+        android:fillAlpha="0.25"
+        android:pathData="M12,2a10,10 0 1,0 0,20a10,10 0 1,0 0,-20z"/>
+
+    <!-- Lingkaran kecil tengah -->
+    <path
+        android:fillColor="#1E90FF"
+        android:pathData="M12,9a3,3 0 1,0 0,6a3,3 0 1,0 0,-6z"/>
+
+    <!-- Garis crosshair -->
+    <path
+        android:strokeColor="#1E90FF"
+        android:strokeWidth="1.5"
+        android:pathData="M12,3 L12,7"/>
+    <path
+        android:strokeColor="#1E90FF"
+        android:strokeWidth="1.5"
+        android:pathData="M12,17 L12,21"/>
+    <path
+        android:strokeColor="#1E90FF"
+        android:strokeWidth="1.5"
+        android:pathData="M3,12 L7,12"/>
+    <path
+        android:strokeColor="#1E90FF"
+        android:strokeWidth="1.5"
+        android:pathData="M17,12 L21,12"/>
+</vector>

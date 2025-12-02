@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- simpan di internal /files/Pictures -->
-    <external-files-path name="images" path="Pictures" />
-    <files-path name="internal_images" path="images/"/>
+
+    <!-- Internal storage -->
+    <files-path
+        name="internal"
+        path="." />
+
+    <!-- Optional gallery external -->
+    <external-files-path
+        name="pictures"
+        path="Pictures" />
+
 </paths>
