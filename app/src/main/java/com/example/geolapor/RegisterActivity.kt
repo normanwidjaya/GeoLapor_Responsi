@@ -33,11 +33,10 @@ class RegisterActivity : AppCompatActivity() {
 
             // Simpan akun
             pref.saveUser(name,email,pass)
-            pref.saveLoginState(true)
 
-            Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Akun berhasil dibuat! Silakan Login", Toast.LENGTH_SHORT).show()
 
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }

@@ -40,9 +40,6 @@ class PrefManager private constructor(ctx: Context) {
 
     fun logout() {
         prefs.edit().apply {
-            remove("name")
-            remove("email")
-            remove("password")
             putBoolean("loggedIn", false)
             apply()
         }
